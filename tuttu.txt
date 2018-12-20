@@ -65,6 +65,7 @@ int main() {
   if(y_n == 'y') {
 	sub++;
 	Tree[i].left = sub;
+	Tree[sub].parent = i;
 	Tree.push_back(node());	// Create new node
   } else {
 	Tree[i].left = 0;
@@ -76,6 +77,7 @@ int main() {
   if(y_n == 'y') {
 	sub++;
 	Tree[i].right = sub;
+	Tree[sub].parent = i;
 	Tree.push_back(node());	// Create new node
   } else {
 	Tree[i].right = 0;
@@ -89,6 +91,45 @@ int main() {
 
   while(i < (int)Tree.size()) {	// Loop until the user no longer wants to add nodes
 
+	int belongTo = Tree[i].parent;
+
+	cout << "[" << Tree[belongTo].data << "]";
+
+	if( Tree[belongTo].left == i) {	// aesthetic
+		cout << "Leftt child data:";
+	} else {
+		cout << "Right child data:";
+	}
+
+	cin >> Tree[i].data;
+	
+~~~~~~~~~~~~~~~~~~~~~~~pick up here~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	cout << "Left child? (y/n): ";
+  	cin >> y_n;
+
+ 	 if(y_n == 'y') {
+		sub++;
+		Tree[i].left = sub;
+		Tree[sub].parent = i;
+		Tree.push_back(node());	// Create new node
+ 	 } else {
+		Tree[i].left = 0;
+ 	 }
+
+	  cout << "Right child? (y/n): ";
+ 	 cin >> y_n;
+
+ 	 if(y_n == 'y') {
+		sub++;
+		Tree[i].right = sub;
+		Tree[sub].parent = i;
+		Tree.push_back(node());	// Create new node
+	  } else {
+		Tree[i].right = 0;
+ 	 }
+
+	i++;
   }
 
   ////////////////////////////////
